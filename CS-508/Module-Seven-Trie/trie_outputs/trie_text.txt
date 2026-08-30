@@ -1,0 +1,45 @@
+ROOT
+├── c
+│   ├── a
+│   │   ├── l
+│   │   │   └── f  ★ calf
+│   │   ├── n  ★ can
+│   │   │   └── e  ★ cane
+│   │   └── r  ★ car
+│   │       ├── a
+│   │       │   └── t  ★ carat
+│   │       ├── b  ★ carb
+│   │       ├── d  ★ card
+│   │       ├── e  ★ care
+│   │       │   ├── d  ★ cared
+│   │       │   └── s  ★ cares
+│   │       ├── p  ★ carp
+│   │       ├── r
+│   │       │   └── y  ★ carry
+│   │       └── t  ★ cart
+│   └── o
+│       ├── m
+│       │   ├── a  ★ coma
+│       │   └── e  ★ come
+│       └── n
+│           └── e  ★ cone
+└── l
+    ├── a
+    │   ├── b
+    │   │   └── e
+    │   │       └── l  ★ label
+    │   ├── d  ★ lad
+    │   │   └── l
+    │   │       └── e  ★ ladle
+    │   ├── m
+    │   │   ├── b  ★ lamb
+    │   │   └── p  ★ lamp
+    │   ├── r
+    │   │   ├── d  ★ lard
+    │   │   └── k  ★ lark
+    │   └── u
+    │       └── g
+    │           └── h  ★ laugh
+    └── u
+        └── c
+            └── k  ★ luck
