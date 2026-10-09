@@ -48,10 +48,14 @@ class Trie:
         self.next_id = 1
         self.root = TrieNode(0)
 
+    @staticmethod
+    def _normalize(word):
+        return word.lower().strip()
+
     def insert(self, word):
         """Insert one word, creating a node only when a prefix is new."""
         current = self.root
-        for letter in word.lower().strip():
+        for letter in self._normalize(word):
             if letter not in current.children:
                 prefix = current.prefix + letter
                 current.children[letter] = TrieNode(self.next_id, letter, prefix)
@@ -62,7 +66,7 @@ class Trie:
     def contains(self, word):
         """Return True only if the complete word is stored."""
         current = self.root
-        for letter in word.lower():
+        for letter in self._normalize(word):
             if letter not in current.children:
                 return False
             current = current.children[letter]
