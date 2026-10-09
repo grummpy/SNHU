@@ -75,7 +75,10 @@ def reconstruct(prev,start,target):
     return []
 
 def path_extremes(g):
-    """Global shortest and longest positive-weight simple paths."""
+    """Global shortest and longest positive-weight simple paths.
+
+    Returns ``(None, None)`` when the graph has no edges.
+    """
     a=adjacency_list(g); paths=[]
     for start in g["vertices"]:
         def explore(u,seen,path,total):
@@ -84,6 +87,8 @@ def path_extremes(g):
                     item=(total+w,path+[v]); paths.append(item)
                     explore(v,seen|{v},path+[v],total+w)
         explore(start,{start},[start],0)
+    if not paths:
+        return None, None
     # Several paths may tie. The paper needs one valid example, so ties are
     # resolved deterministically by the lexicographically smallest path.
     low_weight=min(x[0] for x in paths); high_weight=max(x[0] for x in paths)

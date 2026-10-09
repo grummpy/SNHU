@@ -75,6 +75,9 @@ def ford_fulkerson(capacity, source, sink):
 
     BFS makes this the Edmonds-Karp path-selection version of Ford-Fulkerson.
     """
+    if source == sink:
+        raise ValueError("source and sink must be different vertices")
+
     vertices = set(capacity)
     for neighbors in capacity.values():
         vertices.update(neighbors)

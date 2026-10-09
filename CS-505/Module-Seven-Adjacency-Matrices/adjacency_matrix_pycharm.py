@@ -180,12 +180,23 @@ def problem_12_eigen_2x2(a):
     p, q = a[0]
     r, s = a[1]
     trace, det = p + s, p * s - q * r
-    root = math.sqrt(trace * trace - 4 * det)
+    discriminant = trace * trace - 4 * det
+    # Round-off can make an exactly symmetric matrix look very slightly negative.
+    root = math.sqrt(max(0.0, discriminant))
     values = [(trace + root) / 2, (trace - root) / 2]
     vectors = []
     for value in values:
-        vector = (q, value - p) if abs(q) > 1e-12 else (value - s, r)
+        if abs(q) < 1e-12 and abs(r) < 1e-12:
+            # A diagonal matrix uses its coordinate axes.  This also handles
+            # repeated diagonal values without an arbitrary zero vector.
+            vector = (1.0, 0.0) if abs(value - p) < 1e-12 else (0.0, 1.0)
+        else:
+            vector = (q, value - p) if abs(q) > 1e-12 else (value - s, r)
         length = math.hypot(*vector)
+        # For a scalar matrix both equations are 0 = 0.  Pick a stable,
+        # normalized basis vector rather than dividing by zero.
+        if length < 1e-12:
+            vector, length = (1.0, 0.0), 1.0
         vectors.append(tuple(round(v / length, 6) for v in vector))
     return values, vectors
 
